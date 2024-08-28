@@ -31,7 +31,7 @@
           <button
             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none"
             type="button"
-            @click="reqLogin"
+            @click="login"
           >
             Sign In
           </button>
@@ -48,30 +48,21 @@
 </template>
 
 <script setup>
-import axios from "axios";
 import { ref } from "vue";
-const url = "http://localhost:8080/login";
+import { reqLogin } from "@/api/login.js";
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
 const name = ref("");
 const email = ref("");
 
-const reqLogin = () => {
-  // 전송할 파라미터
-  const params = {
-    email:email.value,
-    name:name.value,
-  };
-  console.log(params);
-  axios.get(url,{params})
-  .then(res=>{
-    console.log(res);
-    if(res.status=='200'){
-      localStorage.setItem('mhToken',res.data);
-    }
-  })
-  .catch(e=>{
-    console.log(e);
-  });
-
+const login = async () => {
+  const res = await reqLogin(email.value, name.value);
+  if (res.status === 200) {
+    localStorage.setItem("mhToken", res.data);
+    router.push({ name: 'home' });
+  }
 };
 </script>
 
