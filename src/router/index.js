@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import LoginPage from '@/pages/LoginPage.vue';
 import LogoutPage from '@/pages/LogoutPage.vue';
+import JoinPage from '@/pages/JoinPage.vue';
+
 
 import Home from '@/pages/Home.vue';
 import FreeBoard from '@/pages/FreeBoard.vue';
@@ -13,13 +15,18 @@ const routes = [
     component: Home
   },
   {
+    path: '/Join',
+    name: 'join',
+    component: JoinPage
+  },
+  {
     path: '/login',
-    name: 'loginPage',
+    name: 'login',
     component: LoginPage
   },
   {
     path: '/logout',
-    name: 'logoutPage',
+    name: 'logout',
     component: LogoutPage
   },
   {

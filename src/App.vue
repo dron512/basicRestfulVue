@@ -37,6 +37,7 @@ onMounted(async () => {
     if (res.status === 200) {
       console.log("login success");
       login.value = "login success";
+      console.log(res.data);
       data.value = res.data;
     }
     isLoading.value = false;
@@ -45,7 +46,7 @@ onMounted(async () => {
   }
 });
 const reqLogout = () => {
-  router.push({ name: "logoutPage" });
+  router.push({ name: "logout" });
 };
 </script>
 
@@ -70,8 +71,9 @@ const reqLogout = () => {
             </button>
           </div>
         </div>
-        <div v-else>
+        <div v-else class="flex space-x-4">
           <RouterLink to="/login"><h1>LOGIN</h1></RouterLink>
+          <RouterLink to="/join"><h1>JOIN</h1></RouterLink>
         </div>
       </div>
       <RouterView />
