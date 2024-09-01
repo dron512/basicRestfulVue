@@ -44,6 +44,7 @@
           </a>
         </div>
       </form>
+      <h1 class="p-3 text-red-500 text-2xl">{{ message }}</h1>
     </div>
   </div>
 </template>
@@ -57,12 +58,15 @@ const router = useRouter();
 
 const name = ref("");
 const email = ref("");
+const message = ref('');
 
 const login = async () => {
   const res = await reqLogin(email.value, name.value);
   if (res.status === 200) {
     localStorage.setItem("mhToken", res.data);
     router.push({ name: 'home' });
+  }else if(res.response.data.errorCode=="INCORRECT_NAME_AND_EMAIL"){
+    message.value='email과 name을 확인해주세요.';
   }
 };
 </script>

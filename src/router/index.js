@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import LoginPage from '@/pages/LoginPage.vue';
 import LogoutPage from '@/pages/LogoutPage.vue';
 import JoinPage from '@/pages/JoinPage.vue';
-
+import MyPage from '@/pages/MyPage.vue';
 
 import Home from '@/pages/Home.vue';
 import FreeBoard from '@/pages/FreeBoard.vue';
@@ -23,6 +23,11 @@ const routes = [
     path: '/login',
     name: 'login',
     component: LoginPage
+  },
+  {
+    path: '/mypage',
+    name: 'mypage',
+    component: MyPage
   },
   {
     path: '/logout',

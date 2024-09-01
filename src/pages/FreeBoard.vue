@@ -22,20 +22,20 @@
           </RouterLink>
         </div>
         <div class="m-1">
-          <table class="w-full border border-blue-300 border-collapse cursor-pointer" :class="{isUp:isUp}">
+          <table class="table-auto w-full border border-blue-300 border-collapse cursor-pointer" :class="{isUp:isUp}">
             <thead>
-              <tr class="bg-slate-200">
+              <tr class="bg-slate-200 flex w-full">
                 <th class="p-2">id</th>
-                <th class="p-2">title</th>
-                <th class="p-2">name</th>
+                <th class="p-2 flex-grow">title</th>
+                <th class="p-2 w-1/4">name</th>
               </tr>
             </thead>
             <tbody class="text-center">
               <tr v-for="(item, index) in items" :key="index"
-                class="border border-blue-300 border-collapse hover:bg-slate-100" @click="view(item.id)">
-                <td class="p-2">{{ item.id }}</td>
-                <td class="p-2">{{ item.title }}</td>
-                <td class="p-2">{{ item.author }}</td>
+                class="flex w-full border border-blue-300 border-collapse hover:bg-slate-100" @click="view(item.id)">
+                <td class="p-2 text-center">{{ item.id }}</td>
+                <td class="p-2 flex-grow text-center truncate">{{ item.title }}</td>
+                <td class="p-2 w-1/4 text-center">{{ item.author }}</td>
               </tr>
             </tbody>
           </table>
@@ -92,7 +92,7 @@ const view = async (id) => {
     author.value = res.data.author;
   }
   else {
-    console.log('에러');
+    // console.log('에러');
   }
 }
 
@@ -118,7 +118,7 @@ const deleteById = async()=>{
     items.value.splice(index, 1); // index 위치의 요소를 1개 삭제
     isView.value =false;
   } else {
-    console.log('No item found with the given id.');
+    // console.log('No item found with the given id.');
   }
   }
 }
@@ -133,7 +133,6 @@ const closeModal = async () => {
 
 onMounted(async () => {
   const res = await findAll();
-  console.log(res);
   if (res == 'error') {
     message.value = "로그인하셔야 됩니다.";
   }
