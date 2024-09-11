@@ -1,4 +1,4 @@
-import { URL } from './util.js'
+const URL = import.meta.env.VITE_API_URL || 'default_url';
 import axios from 'axios'
 
 export const updateUser = async (id, email, name) => {

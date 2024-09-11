@@ -1,9 +1,9 @@
-import {URL} from './util.js';
+const URL = import.meta.env.VITE_API_URL || 'default_url';
 import axios from "axios";
 
 export const findAll = async () => {
   const mhToken = localStorage.getItem('mhToken');
-  if(!mhToken) return 'error';
+  if (!mhToken) return 'error';
   let res;
   try {
     res = await axios.get(`${URL}/freeboards`, {
@@ -31,9 +31,9 @@ export const findById = async (id) => {
   }
 }
 
-export const insert = async (title,content) => {
+export const insert = async (title, content) => {
   const mhToken = localStorage.getItem('mhToken');
-  const data ={
+  const data = {
     title,
     content,
     "author": "string"
@@ -44,16 +44,16 @@ export const insert = async (title,content) => {
     }
   }
   try {
-    const res = await axios.post(`${URL}/freeboards`, data, config );
+    const res = await axios.post(`${URL}/freeboards`, data, config);
     return res;
   } catch (e) {
     return 'error';
   }
 }
 
-export const update = async (id,title,content) => {
+export const update = async (id, title, content) => {
   const mhToken = localStorage.getItem('mhToken');
-  const data ={
+  const data = {
     id,
     title,
     content,
@@ -65,7 +65,7 @@ export const update = async (id,title,content) => {
     }
   }
   try {
-    const res = await axios.put(`${URL}/freeboards`, data, config );
+    const res = await axios.put(`${URL}/freeboards`, data, config);
     return res;
   } catch (e) {
     return 'error';
@@ -80,7 +80,7 @@ export const deleteId = async (id) => {
     }
   }
   try {
-    const res = await axios.delete(`${URL}/freeboards/${id}`, config );
+    const res = await axios.delete(`${URL}/freeboards/${id}`, config);
     return res;
   } catch (e) {
     return 'error';

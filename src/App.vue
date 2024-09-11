@@ -28,16 +28,16 @@ watch(
     }
   },
   {
-    immediate: true
+    immediate: true,
   }
 );
 const reqLogout = () => {
   router.push({ name: "logout" });
 };
 
-const mypage = ()=>{
-  router.push({name:"mypage"});
-}
+const mypage = () => {
+  router.push({ name: "mypage" });
+};
 </script>
 
 <template>
@@ -51,7 +51,9 @@ const mypage = ()=>{
           <RouterLink to="/freeboard"><h1>FREEBOARD</h1></RouterLink>
         </div>
         <div v-if="login" class="group">
-          <span class="cursor-pointer" @click="router.push({name:'home'})">{{ data.name }}님</span>
+          <span class="cursor-pointer" @click="router.push({ name: 'home' })"
+            >{{ data.name }}님</span
+          >
           <div class="absolute hidden group-hover:block w-28 top-9 right-0">
             <button
               class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none m-1"
