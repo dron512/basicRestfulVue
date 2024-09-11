@@ -9,9 +9,11 @@ export const reqLogin = async (email, name) => {
   let res;
   try {
     res = await axios.get(`${URL}/login`, { params })
+    console.log(res);
   } catch (e) {
-   return e;
- }
+    console.log(e);
+    return e;
+  }
   return res
 }
 
@@ -22,9 +24,8 @@ export const reqJoin = async (email, name) => {
   }
   let res = ''
   try {
-     res = await axios.post(`${URL}/user/insert`, params )
+    res = await axios.post(`${URL}/user/insert`, params)
   } catch (e) {
-    console.log(e);
     return e;
   }
   return res;
